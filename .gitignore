@@ -1,0 +1,25 @@
+# Dependências
+node_modules/
+pnpm-debug.log*
+yarn-debug.log*
+npm-debug.log*
+lerna-debug.log*
+
+# Ficheiros de Build / Produção (Gerados quando compilas o projeto)
+dist/
+dist-ssr/
+
+# Variáveis de ambiente (Segredos, chaves de API, etc.)
+.env
+.env.*
+!.env.example
+
+# Ficheiros do Editor (VS Code / WebStorm)
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+# Cache do TypeScript e Vite
+*.tsbuildinfo
+.vite/

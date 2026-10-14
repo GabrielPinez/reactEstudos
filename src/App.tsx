@@ -1,43 +1,55 @@
 import { useState } from 'react';
+import { AdicionarTarefa } from './components/Modal';
 import './App.css';
 
-export function App() {
-  // 1. Estado do contador
-  const [count, setCount] = useState<number>(0);
+type StatusKanban = 'fazer' | 'fazendo' | 'feito';
 
-  // 2. Estado do nome do utilizador
-  const [nome, setNome] = useState<string>('');
+interface Bloco {
+  id: string;
+  texto: string;
+  status: StatusKanban;
+}
+
+
+export function App() {
+
+
+  const [blocos, setBlocos] = useState<Bloco[]>([]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [textoNovoBloco, setTextoNovoBloco] = useState('');
+
+  const adicionarBloco = () => {
+
+  }
 
   return (
     <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Meu Treino de React 🚀</h1>
+      <h1>Kanban do pinercio</h1>
+      <button onClick={() => setIsModalOpen(true)}>adicionar Tarefa</button>
 
       {/* Input de texto com estado */}
       <section style={{ marginBottom: '1.5rem' }}>
-        <label htmlFor="nome">O teu nome: </label>
-        <input
-          id="nome"
-          type="text"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          placeholder="Digita aqui..."
-        />
-        <p>Bem-vindo, <strong>{nome || 'visitante'}</strong>!</p>
+        <h1>A fazer: </h1>
+        <div id='Fazer' className='secoes' ></div>
       </section>
 
-      {/* Contador interativo */}
       <section>
-        <h2>Contador: {count}</h2>
-        <button onClick={() => setCount((prev) => prev + 1)}>
-          +1 Incrementar
-        </button>
-        <button onClick={() => setCount((prev) => prev - 1)} style={{ marginLeft: '0.5rem' }}>
-          -1 Decrementar
-        </button>
-        <button onClick={() => setCount(0)} style={{ marginLeft: '0.5rem' }}>
-          Reset
-        </button>
+        <h1>Fazendo: </h1>
+        <div id='fazendo' className='secoes'></div>
       </section>
+
+      <section>
+        <h1>Feito: </h1>
+        <div id='feito' className='secoes'></div>
+      </section>
+      <AdicionarTarefa 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        texto={textoNovoBloco}
+        setTexto={setTextoNovoBloco}
+        onSalvar={adicionarBloco}
+      />
     </main>
   );
 }

@@ -11,7 +11,7 @@ interface AdicionarTarefaProps {
   onSalvar: () => void;
 }
 
-export function AdicionarTarefa({ isOpen, onClose, texto, setTexto, onSalvar }: AdicionarTarefaProps) {
+export function AdicionarTarefa({ isOpen, onClose, texto, setTexto, onSalvar, status, setStatus }: AdicionarTarefaProps) {
   // Se o modal não estiver aberto, não renderiza nada
   if (!isOpen) return null;
 

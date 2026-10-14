@@ -152,7 +152,17 @@
   }
 }
 
-.secoes {
+.secaoA {
   min-height: 100px;
-  background-color: var(--social-bg);
+  background-color: var(--cardA-bg);
+}
+
+.secaoB {
+  min-height: 100px;
+  background-color: var(--cardB-bg);
+}
+
+.botoes {
+  padding: 2px;
+  margin: 3px;
 }
